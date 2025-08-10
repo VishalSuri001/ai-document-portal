@@ -4,7 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import os
+from pathlib import Path
 from typing import List, Optional, Any, Dict
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 app = FastAPI(title="Documnet Portal API", version="0.1")
 
@@ -17,8 +20,10 @@ app.add_middleware(
 )
 
 # serve static & templates
-app.mount("/static", StaticFiles(directory="../static"), name="static")
-templates = Jinja2Templates(directory="../templates")
+# app.mount("/static", StaticFiles(directory="../static"), name="static")
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+# templates = Jinja2Templates(directory="../templates")
+templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 @app.get("/",response_class=HTMLResponse)
 async def serve_ui(request: Request):
