@@ -5,13 +5,9 @@ from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-<<<<<<< HEAD
 import os
 from pathlib import Path
 from typing import List, Optional, Any, Dict
-=======
-from pathlib import Path
->>>>>>> d6c1c19c610a49c249d131ec5bf79ea44e2421d3
 
 from src.document_ingestion.data_ingestion import (
     DocHandler,
@@ -23,7 +19,6 @@ from src.document_analyzer.data_analysis import DocumentAnalyzer
 from src.document_compare.document_comparator import DocumentComparatorLLM
 from src.document_chat.retrieval import ConversationalRAG
 
-<<<<<<< HEAD
 BASE_DIR = Path(__file__).resolve().parent.parent  # project root
 
 # app.mount(
@@ -32,8 +27,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent  # project root
 #     name="static"
 # )
 
-=======
->>>>>>> d6c1c19c610a49c249d131ec5bf79ea44e2421d3
 FAISS_BASE = os.getenv("FAISS_BASE", "faiss_index")
 UPLOAD_BASE = os.getenv("UPLOAD_BASE", "data")
 FAISS_INDEX_NAME = os.getenv("FAISS_INDEX_NAME", "index")  # <--- keep consistent with save_local()
@@ -52,17 +45,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-<<<<<<< HEAD
-# serve static & templates
-# app.mount("/static", StaticFiles(directory="../static"), name="static")
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
-# templates = Jinja2Templates(directory="../templates")
-templates = Jinja2Templates(directory=BASE_DIR / "templates")
-
 @app.get("/",response_class=HTMLResponse)
-=======
-@app.get("/", response_class=HTMLResponse)
->>>>>>> d6c1c19c610a49c249d131ec5bf79ea44e2421d3
 async def serve_ui(request: Request):
     resp = templates.TemplateResponse("index.html", {"request": request})
     resp.headers["Cache-Control"] = "no-store"

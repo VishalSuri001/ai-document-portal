@@ -1,15 +1,11 @@
 langchain==0.3.27
 langchain-community==0.3.27
 langchain-core==0.3.72
-<<<<<<< HEAD
-streamlit==1.47.1
-=======
 
 langchain-groq==0.3.6
 langchain-google-genai==2.1.8
 
 faiss-cpu==1.11.0.post1
->>>>>>> d6c1c19c610a49c249d131ec5bf79ea44e2421d3
 fastapi==0.116.1
 uvicorn==0.35.0
 python-dotenv==1.1.1
